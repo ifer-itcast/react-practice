@@ -19,6 +19,18 @@ npm install react react-dom @babel/runtime -S
 
 // AntD 按需加载
 npm i babel-plugin-import -D
+
+npm i antd -S
+```
+
+**样式和图片**
+
+```javascript
+npm i style-loader css-loader -D
+
+npm i node-sass sass-loader -D
+
+npm i file-loader url-loader -D
 ```
 
 **配置**
@@ -47,8 +59,33 @@ module.exports = {
                 test: /\.jsx?$/,
                 use: 'babel-loader',
                 exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.ttf|woff|woff2|eot|svg|jpg|png|gif|bmp$/i,
+                use: 'url-loader'
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                mode: 'local',
+                                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                            }
+                        }
+                    },
+                    'sass-loader'
+                ]
             }
         ]
     }
 };
 ```
+
