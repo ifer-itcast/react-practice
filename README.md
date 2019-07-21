@@ -89,3 +89,22 @@ module.exports = {
 };
 ```
 
+## 目录结构
+
+tree -l 4 --ignore node_modules,dist
+
+```
+├── src
+|  ├── components
+|  |  ├── about
+|  |  ├── App.jsx => 根组件
+|  |  ├── common
+|  |  |  ├── Content.jsx
+|  |  |  ├── Footer.jsx
+|  |  |  └── Header.jsx
+|  |  ├── home
+|  |  └── movie
+|  ├── index.html
+|  └── index.js => 入口文件
+└── webpack.config.js
+```

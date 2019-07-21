@@ -1,8 +1,15 @@
+/*
+ * @Author: Ifer 
+ * @Date: 2019-07-22 00:51:32 
+ * @Last Modified by:   Ifer 
+ * @Last Modified time: 2019-07-22 00:51:32 
+ */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { DatePicker } from 'antd';
+
+import App from '@/components/App';
 
 ReactDOM.render(
-    <DatePicker/>,
+    <App/>,
     document.querySelector('#root')
 );
