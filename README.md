@@ -108,3 +108,15 @@ tree -l 4 --ignore node_modules,dist
 |  └── index.js => 入口文件
 └── webpack.config.js
 ```
+
+## 基本布局
+
+## 路由设计
+
+```javascript
+npm i react-router-dom -S
+```
+
+```javascript
+<Menu defaultSelectedKeys={[location.hash.split('/')[1] || 'home']}></Menu>
+```

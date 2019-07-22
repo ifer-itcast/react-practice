@@ -2,13 +2,20 @@
  * @Author: Ifer 
  * @Date: 2019-07-22 00:51:49 
  * @Last Modified by: Ifer
- * @Last Modified time: 2019-07-22 09:32:11
+ * @Last Modified time: 2019-07-22 10:06:47
  */
 import React from 'react';
+import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { Layout } from 'antd';
+
 import PHeader from '@/components/common/header';
 import Movie from '@/components/movie';
+import Home from '@/components/home';
+import About from '@/components/about';
 import PFooter from '@/components/common/footer';
-import { Layout } from 'antd';
+
+const Wrapper = (props) => <div style={{ display: 'flex', flex: 1, backgroundColor: '#fff' }}>{props.children}</div>;
+
 import './style.css';
 
 export default class App extends React.Component {
@@ -18,11 +25,20 @@ export default class App extends React.Component {
     }
     render() {
         return (
-            <Layout style={{height: '100%'}}>
-                <PHeader></PHeader>
-                <Movie></Movie>
-                <PFooter></PFooter>
-            </Layout>
+            <Router>
+                <Layout style={{ height: '100%' }}>
+                    <PHeader></PHeader>
+                    <Wrapper>
+                        <Switch>
+                            <Route exact path="/" render={() => <Redirect to="/home" />} />
+                            <Route path="/home" component={Home}></Route>
+                            <Route path="/movie" component={Movie}></Route>
+                            <Route path="/about" component={About}></Route>
+                        </Switch>
+                    </Wrapper>
+                    <PFooter></PFooter>
+                </Layout>
+            </Router>
         );
     }
 }
