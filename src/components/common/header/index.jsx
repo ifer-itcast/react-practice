@@ -2,7 +2,7 @@
  * @Author: Ifer 
  * @Date: 2019-07-22 01:00:37 
  * @Last Modified by: Ifer
- * @Last Modified time: 2019-07-22 10:31:09
+ * @Last Modified time: 2019-07-22 10:34:35
  */
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
@@ -10,7 +10,6 @@ import { Layout, Menu } from "antd";
 const { Header } = Layout;
 
 import oCss from "./style.scss";
-import { log } from "util";
 
 
 export default class PHeader extends Component {

@@ -1,0 +1,31 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex: 1;
+    background-color: #fff;
+    // &::after{
+    //     content: '';
+    //     flex: auto;
+    // }
+}
+
+.detail {
+    .title{
+        font-size: 30px;
+        text-align: center;
+    }
+    .imgWrap{
+        text-align: center;
+        img{
+            width: 260px;
+        }
+    }
+    .con{
+        margin-top: 20px;
+        line-height: 30px;
+        p{
+            text-indent: 28px;
+        }
+    }
+}

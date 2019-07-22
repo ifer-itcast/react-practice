@@ -2,13 +2,14 @@
  * @Author: Ifer 
  * @Date: 2019-07-22 01:50:26 
  * @Last Modified by: Ifer
- * @Last Modified time: 2019-07-22 10:31:52
+ * @Last Modified time: 2019-07-22 11:24:38
  */
 import React, { Component } from "react";
-import { Link, Route, Redirect } from "react-router-dom";
+import { Link, Route, Redirect, Switch } from "react-router-dom";
 import { Layout, Menu, Icon } from "antd";
 const { Content, Sider } = Layout;
 
+import PContent from "./content";
 import Detail from "./detail";
 
 export default class Movie extends Component {
@@ -36,13 +37,16 @@ export default class Movie extends Component {
                     <Content
                         style={{
                             background: "#fff",
-                            padding: 24,
+                            padding: "24px 24px 0 24px",
                             margin: 0,
                             minHeight: 280,
                         }}
                     >
-                        <Route path={`${path}`} render={() => <Redirect to={`${path}/in_theaters/1`} />} />
-                        <Route path={`${path}/:type/:pnum`} component={Detail} />
+                        <Switch>
+                            <Route exact path={`${path}`} render={() => <Redirect to={`${path}/in_theaters/1`} />} />
+                            <Route path={`${path}/detail/:id`} component={Detail} />
+                            <Route path={`${path}/:type/:pnum`} component={PContent} />
+                        </Switch>
                     </Content>
                 </Layout>
             </Layout>
