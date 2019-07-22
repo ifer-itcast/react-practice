@@ -33,8 +33,8 @@ export default class PContent extends Component {
             this.getMovieData();
         });
     }
-    jumpDetail = () => {
-        this.props.history.push('/movie/detail/1');
+    jumpDetail = (id) => {
+        this.props.history.push(`/movie/detail/${id}`);
     }
     // 获取数据
     getMovieData = async () => {
@@ -81,7 +81,7 @@ export default class PContent extends Component {
                                 hoverable
                                 style={{ width: 200 }}
                                 cover={<img alt="example" src={item.images.small} />}
-                                onClick={() => this.jumpDetail()}
+                                onClick={() => this.jumpDetail(item.id)}
                                 key={item.id}
                             >
                                 <Meta title={item.title} />

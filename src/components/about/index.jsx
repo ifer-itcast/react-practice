@@ -7,7 +7,7 @@ export default class About extends Component {
     }
     render() {
         return (
-            <div>About</div>
+            <div style={{display: 'flex', flex: 1, justifyContent: 'center', alignItems: 'center', fontSize: 30}}>关于的内容</div>
         );
     }
 }

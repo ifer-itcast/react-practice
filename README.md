@@ -94,16 +94,28 @@ module.exports = {
 tree -l 4 --ignore node_modules,dist
 
 ```
+├── package-lock.json
+├── package.json
+├── README.md
 ├── src
 |  ├── components
-|  |  ├── about
+|  |  ├── about   => 关于
+|  |  |  └── index.jsx
 |  |  ├── App.jsx => 根组件
-|  |  ├── common
-|  |  |  ├── Content.jsx
-|  |  |  ├── Footer.jsx
-|  |  |  └── Header.jsx
-|  |  ├── home
-|  |  └── movie
+|  |  ├── common  => 公共组件
+|  |  |  ├── footer
+|  |  |  |  └── index.jsx
+|  |  |  └── header
+|  |  |     ├── index.jsx
+|  |  |     └── style.scss
+|  |  ├── home    => 首页
+|  |  |  └── index.jsx
+|  |  ├── movie   => 电影
+|  |  |  ├── content.jsx
+|  |  |  ├── detail.jsx
+|  |  |  ├── index.jsx
+|  |  |  └── style.scss
+|  |  └── style.css => 全局样式
 |  ├── index.html
 |  └── index.js => 入口文件
 └── webpack.config.js
@@ -157,3 +169,7 @@ Component.prototype.apikey = '0df993c66c0c636e29ecbb5344252a4a';
 ## 电影分页
 
 点击分页 => `this.props.history.push(`/movie/${type}/${pnum}`);` => `componentWillReceiveProps` => `getMovieData()`
+
+## 电影详情
+
+注意容错处理
