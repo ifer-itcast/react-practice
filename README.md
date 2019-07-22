@@ -123,11 +123,24 @@ tree -l 4 --ignore node_modules,dist
 
 ## 基本布局
 
+- 上：header
+- 中
+    - 首页的内容
+    - 电影的内容
+        - 左：电影类型
+        - 右：对应列表
+    - 关于
+- 下：footer
+
 ## 路由设计
+
+**安装**
 
 ```javascript
 npm i react-router-dom -S
 ```
+
+**根据 Hash 高亮当前项**
 
 ```javascript
 // 刷新高亮当前标题
@@ -147,16 +160,22 @@ npm i react-router-dom -S
 
 ## 获取数据
 
+**豆瓣接口**
+
 0. 根路径：`https://api.douban.com`
 1. 正在热映：`/v2/movie/in_theaters?start=0&count=1`
 2. 即将上映：`/v2/movie/coming_soon?start=0&count=1`
 3. 排行榜：`/v2/movie/top250?start=0&count=1`
 4. 电影详情：`/v2/movie/subject/26861685`
 
+**解决跨域**
+
 ```javascript
 // 解决跨域
 npm i fetch-jsonp -S
 ```
+
+**全局配置**
 
 ```javascript
 // 挂载到入口或根组件上
@@ -168,7 +187,14 @@ Component.prototype.apikey = '0df993c66c0c636e29ecbb5344252a4a';
 
 ## 电影分页
 
-点击分页 => `this.props.history.push(`/movie/${type}/${pnum}`);` => `componentWillReceiveProps` => `getMovieData()`
+1. 点击分页
+2. 编程式导航
+
+```javascript
+this.props.history.push(`/movie/${type}/${pnum}`);
+```
+3. 触发 `componentWillReceiveProps`
+4. 获取数据 `getMovieData()`
 
 ## 电影详情
 
