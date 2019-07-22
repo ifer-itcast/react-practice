@@ -2,38 +2,34 @@
  * @Author: Ifer 
  * @Date: 2019-07-22 01:00:37 
  * @Last Modified by: Ifer
- * @Last Modified time: 2019-07-22 10:01:47
+ * @Last Modified time: 2019-07-22 10:31:09
  */
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import { Layout, Menu } from 'antd';
+import React, { Component } from "react";
+import {Link} from "react-router-dom";
+import { Layout, Menu } from "antd";
 const { Header } = Layout;
 
-import oCss from './style.scss';
-import { log } from 'util';
+import oCss from "./style.scss";
+import { log } from "util";
 
 
 export default class PHeader extends Component {
     constructor() {
         super();
-        this.state = {
-            selectedItem: 'home'
-        };
     }
     handleMenuClick = (item) => {
         this.setState({
         });
     }
     render() {
-        const {selectedItem} = this.state;
         return (
             <Header className="header">
                 <div className={oCss.logo} />
                 <Menu
                     theme="dark"
                     mode="horizontal"
-                    defaultSelectedKeys={[location.hash.split('/')[1] || 'home']}
-                    style={{ lineHeight: '64px' }}
+                    defaultSelectedKeys={[location.hash.split("/")[1] || "home"]}
+                    style={{ lineHeight: "64px" }}
                     onClick={(item) => this.handleMenuClick(item)}
                 >
                     <Menu.Item key="home"><Link to="/home">首页</Link></Menu.Item>
