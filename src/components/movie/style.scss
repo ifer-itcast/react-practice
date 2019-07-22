@@ -1,20 +1,18 @@
 .wrapper {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
     flex: 1;
-    background-color: #fff;
-    // &::after{
-    //     content: '';
-    //     flex: auto;
-    // }
+    overflow-y: auto;
+    .list{
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
     .movietype{
         font-size: 12px;
         margin-top: 10px;
         margin-bottom: 0;
     }
 }
-
 .detail {
     .title{
         font-size: 30px;

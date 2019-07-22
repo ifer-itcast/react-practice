@@ -2,7 +2,7 @@
  * @Author: Ifer 
  * @Date: 2019-07-22 00:51:49 
  * @Last Modified by: Ifer
- * @Last Modified time: 2019-07-22 11:23:28
+ * @Last Modified time: 2019-07-22 13:18:31
  */
 import React from 'react';
 import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
@@ -14,7 +14,7 @@ import Home from '@/components/home';
 import About from '@/components/about';
 import PFooter from '@/components/common/footer';
 
-const Wrapper = (props) => <div style={{ display: 'flex', flex: 1, backgroundColor: '#fff' }}>{props.children}</div>;
+const Wrapper = (props) => <div style={{ display: 'flex', flex: 1, backgroundColor: '#fff', overflow: "hidden" }}>{props.children}</div>;
 
 import './style.css';
 

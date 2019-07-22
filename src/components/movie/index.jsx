@@ -2,7 +2,7 @@
  * @Author: Ifer 
  * @Date: 2019-07-22 01:50:26 
  * @Last Modified by: Ifer
- * @Last Modified time: 2019-07-22 12:17:48
+ * @Last Modified time: 2019-07-22 13:26:40
  */
 import React, { Component } from "react";
 import { Link, Route, Redirect, Switch } from "react-router-dom";
@@ -33,14 +33,14 @@ export default class Movie extends Component {
                         <Menu.Item key="3"><Link to={`${path}/top250/1`}><Icon type="video-camera" />排行榜</Link></Menu.Item>
                     </Menu>
                 </Sider>
-                <Layout style={{ padding: "24px 24px 0" }}>
+                <Layout style={{ padding: "24px 24px 0", overflow: "hidden" }}>
                     <Content
                         style={{
                             background: "#fff",
-                            padding: "24px 24px 0 24px",
+                            padding: "24px",
                             margin: 0,
                             minHeight: 280,
-                            display: "flex"
+                            display: "flex",
                         }}
                     >
                     <Switch>

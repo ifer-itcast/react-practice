@@ -153,3 +153,7 @@ Component.prototype.$http = fetchJSONP;
 Component.prototype.baseURL = 'https://api.douban.com';
 Component.prototype.apikey = '0df993c66c0c636e29ecbb5344252a4a';
 ```
+
+## 电影分页
+
+点击分页 => `this.props.history.push(`/movie/${type}/${pnum}`);` => `componentWillReceiveProps` => `getMovieData()`
