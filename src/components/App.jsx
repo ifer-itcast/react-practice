@@ -2,12 +2,14 @@
  * @Author: Ifer 
  * @Date: 2019-07-22 00:51:49 
  * @Last Modified by: Ifer
- * @Last Modified time: 2019-07-22 01:00:34
+ * @Last Modified time: 2019-07-22 09:32:11
  */
 import React from 'react';
-import Header from '@/components/common/Header';
-import Content from '@/components/common/Content';
-import Footer from '@/components/common/Footer';
+import PHeader from '@/components/common/header';
+import Movie from '@/components/movie';
+import PFooter from '@/components/common/footer';
+import { Layout } from 'antd';
+import './style.css';
 
 export default class App extends React.Component {
     constructor() {
@@ -16,11 +18,11 @@ export default class App extends React.Component {
     }
     render() {
         return (
-            <div>
-                <Header></Header>
-                <Content></Content>
-                <Footer></Footer>
-            </div>
+            <Layout style={{height: '100%'}}>
+                <PHeader></PHeader>
+                <Movie></Movie>
+                <PFooter></PFooter>
+            </Layout>
         );
     }
 }
