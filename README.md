@@ -118,5 +118,38 @@ npm i react-router-dom -S
 ```
 
 ```javascript
+// 刷新高亮当前标题
 <Menu defaultSelectedKeys={[location.hash.split('/')[1] || 'home']}></Menu>
+```
+
+**电影内页路由**
+
+```javascript
+// 注意 exact
+<Switch>
+    <Route exact path={`${path}`} render={() => <Redirect to={`${path}/in_theaters/1`} />} />
+    <Route path={`${path}/detail/:id`} component={Detail} />
+    <Route path={`${path}/:type/:pnum`} component={PContent} />
+</Switch>
+```
+
+## 获取数据
+
+0. 根路径：`https://api.douban.com`
+1. 正在热映：`/v2/movie/in_theaters?start=0&count=1`
+2. 即将上映：`/v2/movie/coming_soon?start=0&count=1`
+3. 排行榜：`/v2/movie/top250?start=0&count=1`
+4. 电影详情：`/v2/movie/subject/26861685`
+
+```javascript
+// 解决跨域
+npm i fetch-jsonp -S
+```
+
+```javascript
+// 挂载到入口或根组件上
+import fetchJSONP from 'fetch-jsonp';
+Component.prototype.$http = fetchJSONP;
+Component.prototype.baseURL = 'https://api.douban.com';
+Component.prototype.apikey = '0df993c66c0c636e29ecbb5344252a4a';
 ```

@@ -4,3 +4,8 @@
 .ant-card{
     margin-bottom: 24px;
 }
+
+.ant-card-body{
+    padding-top: 15px;
+    padding-bottom: 10px;
+}

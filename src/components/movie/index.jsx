@@ -2,7 +2,7 @@
  * @Author: Ifer 
  * @Date: 2019-07-22 01:50:26 
  * @Last Modified by: Ifer
- * @Last Modified time: 2019-07-22 11:24:38
+ * @Last Modified time: 2019-07-22 12:17:48
  */
 import React, { Component } from "react";
 import { Link, Route, Redirect, Switch } from "react-router-dom";
@@ -40,13 +40,14 @@ export default class Movie extends Component {
                             padding: "24px 24px 0 24px",
                             margin: 0,
                             minHeight: 280,
+                            display: "flex"
                         }}
                     >
-                        <Switch>
-                            <Route exact path={`${path}`} render={() => <Redirect to={`${path}/in_theaters/1`} />} />
-                            <Route path={`${path}/detail/:id`} component={Detail} />
-                            <Route path={`${path}/:type/:pnum`} component={PContent} />
-                        </Switch>
+                    <Switch>
+                        <Route exact path={`${path}`} render={() => <Redirect to={`${path}/in_theaters/1`} />} />
+                        <Route path={`${path}/detail/:id`} component={Detail} />
+                        <Route path={`${path}/:type/:pnum`} component={PContent} />
+                    </Switch>
                     </Content>
                 </Layout>
             </Layout>
