@@ -34,7 +34,7 @@ export default class PContent extends Component {
         });
     }
     jumpDetail = (id) => {
-        this.props.history.push(`/movie/detail/${id}`);
+        this.props.history.push(`/movie/${this.props.match.params.type}/detail/${id}`);
     }
     // 获取数据
     getMovieData = async () => {

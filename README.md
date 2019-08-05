@@ -26,11 +26,7 @@ npm i antd -S
 **样式和图片**
 
 ```javascript
-npm i style-loader css-loader -D
-
-npm i node-sass sass-loader -D
-
-npm i file-loader url-loader -D
+npm i style-loader css-loader node-sass sass-loader file-loader url-loader -D
 ```
 
 **配置**
@@ -140,20 +136,33 @@ tree -l 4 --ignore node_modules,dist
 npm i react-router-dom -S
 ```
 
-**根据 Hash 高亮当前项**
+**刷新时保持顶部导航状态**
 
 ```javascript
-// 刷新高亮当前标题
 <Menu defaultSelectedKeys={[location.hash.split('/')[1] || 'home']}></Menu>
 ```
 
-**电影内页路由**
+**刷新时保持电影内页左侧导航状态**
+
+```javascript
+
+<Menu
+    mode="inline"
+    defaultSelectedKeys={[location.hash.split('/')[2] || 'in_theaters']}
+    style={{ height: "100%", borderRight: 0 }}
+>
+    <Menu.Item key="in_theaters"><Link to={`${path}/in_theaters/1`}><Icon type="pie-chart" />正在热映</Link></Menu.Item>
+</Menu>
+```
+
+**电影内页路由设计**
 
 ```javascript
 // 注意 exact
 <Switch>
     <Route exact path={`${path}`} render={() => <Redirect to={`${path}/in_theaters/1`} />} />
-    <Route path={`${path}/detail/:id`} component={Detail} />
+    // 注意顺序，之所以加上某个 type 下的 detail，是为了在 detail 刷新时也记录下侧边栏的状态
+    <Route path={`${path}/:type/detail/:id`} component={Detail} />
     <Route path={`${path}/:type/:pnum`} component={PContent} />
 </Switch>
 ```
@@ -187,15 +196,32 @@ Component.prototype.apikey = '0df993c66c0c636e29ecbb5344252a4a';
 
 ## 电影分页
 
-1. 点击分页
-2. 编程式导航
-
 ```javascript
+// 编程式导航进行跳转到当前组件，pnum 代表当前哪一页
 this.props.history.push(`/movie/${type}/${pnum}`);
 ```
-3. 触发 `componentWillReceiveProps`
-4. 获取数据 `getMovieData()`
+
+```javascript
+// 命中路由
+<Route path={`${path}/:type/:pnum`} component={PContent} />
+
+// 触发 componentWillReceiveProps
+
+// 获取数据 getMovieData()
+```
+
+```javascript
+// 分页原理
+const start = (pageNow - 1) * pageCount;
+```
 
 ## 电影详情
 
-注意容错处理
+注意容错处理，第一次 render 时数据还没拿过来。
+
+```javascript
+// 详情页也是编程式导航进行的跳转
+// 分页是 element diff，改变了路由的 props 数据，触发 componentWillReceiveProps
+// 详情是 component diff，直接替换了组件，触发 componentWillMount
+this.props.history.push(`/movie/${this.props.match.params.type}/detail/${id}`);
+```
